@@ -1,4 +1,5 @@
 ﻿using ClassLibrary1.BaseClass;
+using ClassLibrary1.Pages;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
@@ -18,6 +19,8 @@ namespace ClassLibrary1
             search();
             //pop_up();
             scrollDown();
+            var priceText = driver.FindElement(By.CssSelector("div#p-449429646 ins")).Text;
+            var priceText2 = driver.FindElement(By.CssSelector("#p-238339646 ins")).Text;
             cssClick("div#p-449429646 h3.productName");
             productOptions(".//*[@id = '768877666']/option[2]");
             productOptions(".//*[@id = '768877667']/option[2]");
@@ -30,8 +33,19 @@ namespace ClassLibrary1
             cssClick("div#contentProDetail a.btnAddBasket");
             cssClick("div#wrapper a.myBasket");
             kvkk();
-            cssClick("span#js-buyBtn");
-            login();
+            var basketPrice = driver.FindElement(By.CssSelector("div#newCheckout table:nth-child(6) div.priceArea span")).Text;
+            var basketPrice2 = driver.FindElement(By.CssSelector("div#newCheckout table:nth-child(5) div.priceArea span")).Text;
+            if (priceText == basketPrice && priceText2 == basketPrice2)
+            {  
+                cssClick("span#js-buyBtn");
+                LoginPage login = new LoginPage(driver);
+                login.TypeUsername();
+                login.TypePassword();
+                login.ClickLoginButton(); 
+            }
+            
+            
+            
         }
 
         [Test]
