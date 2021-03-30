@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseClass\BaseTest.cs" />
+    <Compile Include="BaseClass\HomeClass.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
